@@ -1,4 +1,5 @@
 import { Reducer } from 'redux';
+import produce from 'immer';
 
 import { ICartState } from './type';
 
@@ -11,16 +12,13 @@ const cart: Reducer<ICartState> = (state = INITIAL_STATE, action) => {
     case 'ADD_PRODUCT_TO_CART': {
       const { product } = action.payload;
 
-      return {
-        ...state,
-        items: [
-          ...state.items,
-          {
-            product,
-            quantity: 1,
-          },
-        ],
-      };
+      // Essa função troca o conceito de imutabilidade por 'push'.
+      produce(state, (draft) => {
+        draft.items.push({
+          product,
+          quantity: 1,
+        });
+      });
     }
 
     default: {
