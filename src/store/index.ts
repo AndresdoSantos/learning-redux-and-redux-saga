@@ -1,4 +1,4 @@
-import { applyMiddleware, configureStore } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 
 import { ICartState } from './modules/cart/type';
@@ -15,7 +15,7 @@ const middlewares = [sagaMiddleware];
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware: (e) => middlewares,
+  middleware: () => middlewares,
 });
 
 sagaMiddleware.run(rootSaga);
