@@ -1,9 +1,9 @@
 /** Cada ação que pode acontecer dentro do Reducer vai ser uma função */
-import { IProduct } from './type';
+import { ActionTypes, IProduct } from './type';
 
 function addProductToCartRequest(product: IProduct) {
   return {
-    type: 'ADD_PRODUCT_TO_CART_REQUEST',
+    type: ActionTypes.addProductToCartRequest,
     payload: {
       product,
     },
@@ -12,7 +12,7 @@ function addProductToCartRequest(product: IProduct) {
 
 function addProductToCartSuccess(product: IProduct) {
   return {
-    type: 'ADD_PRODUCT_TO_CART_SUCCESS',
+    type: ActionTypes.addProductToCartSuccess,
     payload: {
       product,
     },
@@ -21,7 +21,7 @@ function addProductToCartSuccess(product: IProduct) {
 
 function addProductToCartFailure(productId: number) {
   return {
-    type: 'ADD_PRODUCT_TO_CART_FAILURE',
+    type: ActionTypes.addProductToCartFailure,
     payload: {
       productId,
     },
